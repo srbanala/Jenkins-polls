@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['ec2-54-82-202-144.compute-1.amazonaws.com',]
 # Application definition
 
 INSTALLED_APPS = [
-    'mortgage.apps.MortgageConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
