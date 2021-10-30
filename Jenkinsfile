@@ -6,20 +6,30 @@ pipeline {
         stages {
             stage('Build') {
                 steps {
-                sh 'mkdir -p /django_polls/dist'
-                sh 'cd /django_polls/dist'
-                sh 'python -m pip install --user django-polls-0.1.tar.gz'
+                sh 'docker build -t anreddy/polls_sqlite .'
+
                 }
              }
             stage('Test') {
                 steps{
-                    sh 'python ./mysite/manage.py test run '
+                    sh 'docker run -t anreddy/polls_sqlite python ./mysite/manage.py test run  '
                 }
                }
-            stage '(Deploy)' {
+            stage ('Deploy') {
                 when {
                     branch 'feature'
                     }
                 steps{
-                sh ' python ./mysite/maange.py runserver }
-    }
+                sh 'docker run -d -p 8000:8000 -t anreddy/polls_sqlite '
+                 }
+                }
+            stage ('Prod-Deploy') {
+                when {
+                   branch 'master'
+                   }
+                steps {
+                sh 'docker run -d -p 9090:8000 -t anreddy/polls_sqlite'
+                }
+              }
+   }
+ }
