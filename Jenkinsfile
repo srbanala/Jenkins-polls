@@ -7,8 +7,8 @@ pipeline {
             stage('Build') {
                 steps {
                 sh 'mkdir -p /tmp/django_polls/dist'
-                sh ' sudo cd /tmp/django_polls/dist'
-                sh 'sudo python -m pip install --user django-polls-0.1.tar.gz'
+                sh 'cd /tmp/django_polls/dist'
+                sh ' python -m pip install --user django-polls-0.1.tar.gz'
                 }
              }
             stage('Test') {
