@@ -1,5 +1,5 @@
 # Specifying Base Image
-FROM python:apline
+FROM python:alpine
 
 # Installing Dependencies
 
