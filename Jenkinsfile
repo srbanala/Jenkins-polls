@@ -8,7 +8,7 @@ pipeline {
                 steps {
                 sh 'mkdir -p /tmp/django_polls/dist'
                 sh 'cd /tmp/django_polls/dist'
-                sh 'sudo yum install python:alpine'
+                
                 sh ' python -m pip install --user django-polls-0.1.tar.gz'
                 }
              }
