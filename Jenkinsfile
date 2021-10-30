@@ -7,12 +7,12 @@ pipeline {
             stage('Build') {
                 steps {
                 sh 'docker build -t anreddy/polls_sqlite .'
-                sh 'docker run -t -d anreddy/polls_sqlite -p 8000:8000'
+
                 }
              }
             stage('Test') {
                 steps{
-                    sh 'docker run -t anreddy/polls_sqlite python /django_polls/dist/mysite/manage.pytest run '
+                    sh 'docker run -t anreddy/polls_sqlite python manage.py test run '
                 }
                }
             stage ('Deploy') {
