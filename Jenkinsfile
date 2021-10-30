@@ -16,14 +16,13 @@ pipeline {
                     sh 'python ./mysite/manage.py test run '
                 }
                }
-            stage '(Deploy)' {
+            stage ('Deploy') {
                 when {
                     branch 'feature'
                     }
                 steps{
-                sh ' python ./mysite/manage.py runserver'
+                sh 'python ./mysite/manage.py runserver'
                  }
     }
 
  }
- 
