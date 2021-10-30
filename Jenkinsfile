@@ -13,7 +13,7 @@ pipeline {
              }
             stage('Test') {
                 steps{
-                    sh 'sudo python ./mysite/manage.py test run '
+                    sh 'python /tmp/django_polls/dist/mysite/manage.py test run '
                 }
                }
             stage ('Deploy') {
@@ -21,7 +21,7 @@ pipeline {
                     branch 'feature'
                     }
                 steps{
-                sh 'sudo python ./mysite/manage.py runserver'
+                sh 'python /tmp/django_polls/dist/mysite/manage.py runserver'
                  }
        }
    }
