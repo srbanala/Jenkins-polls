@@ -20,7 +20,7 @@ pipeline {
                     branch 'feature'
                     }
                 steps{
-                sh 'docker run -d -p 8000:8000 anreddy/polls_sqlite '
+                sh 'docker run -d -p 8000:8000 -t anreddy/polls_sqlite '
                  }
        }
    }
