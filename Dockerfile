@@ -3,7 +3,7 @@ FROM python:alpine
 
 # Installing Dependencies
 
-WORKDIR .django_polls/dist
+WORKDIR ./django_polls/dist
 
 COPY ./ ./
 
