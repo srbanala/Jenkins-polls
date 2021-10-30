@@ -22,6 +22,14 @@ pipeline {
                 steps{
                 sh 'docker run -d -p 8000:8000 -t anreddy/polls_sqlite '
                  }
-       }
+                }
+            stage ('Prod-Deploy') {
+                when {
+                   branch 'master'
+                   }
+                steps {
+                sh 'docker run -d -p 9090:8000 -t anreddy/polls_sqlite'
+                }
+              }
    }
  }
