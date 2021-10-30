@@ -6,14 +6,14 @@ pipeline {
         stages {
             stage('Build') {
                 steps {
-                sh 'mkdir -p /django_polls/dist'
-                sh 'cd /django_polls/dist'
-                sh 'python -m pip install --user django-polls-0.1.tar.gz'
+                sh 'sudo mkdir -p /django_polls/dist'
+                sh ' sudo cd /django_polls/dist'
+                sh 'sudo python -m pip install --user django-polls-0.1.tar.gz'
                 }
              }
             stage('Test') {
                 steps{
-                    sh 'python ./mysite/manage.py test run '
+                    sh 'sudo python ./mysite/manage.py test run '
                 }
                }
             stage ('Deploy') {
@@ -21,7 +21,7 @@ pipeline {
                     branch 'feature'
                     }
                 steps{
-                sh 'python ./mysite/manage.py runserver'
+                sh 'sudo python ./mysite/manage.py runserver'
                  }
        }
    }
