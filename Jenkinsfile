@@ -21,5 +21,9 @@ pipeline {
                     branch 'feature'
                     }
                 steps{
-                sh ' python ./mysite/manage.py runserver }
+                sh ' python ./mysite/manage.py runserver'
+                 }
     }
+
+ }
+ 
