@@ -23,6 +23,6 @@ pipeline {
                 steps{
                 sh 'python ./mysite/manage.py runserver'
                  }
-    }
-
+       }
+   }
  }
