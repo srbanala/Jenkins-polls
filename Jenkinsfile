@@ -21,8 +21,7 @@ pipeline {
                     }
                 steps{
                 sh 'pre-prod-deploy.sh'
-               # sh 'docker run -d -p 8000:8000 -t anreddy/polls_sqlite '
-                 }
+                }
                 }
             stage ('Prod-Deploy') {
                 when {
