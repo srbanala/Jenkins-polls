@@ -20,10 +20,8 @@ pipeline {
                     branch 'feature'
                     }
                 steps{
-                sh 'ssh ec2-user@10.0.102.109  -i /tmp/mykp.pem'
-                sh 'sudo yum update -y'
-                sh 'sudo yum install docker'
-                sh 'docker run -d -p 8000:8000 -t anreddy/polls_sqlite '
+                sh 'pre-prod-deploy.sh'
+               # sh 'docker run -d -p 8000:8000 -t anreddy/polls_sqlite '
                  }
                 }
             stage ('Prod-Deploy') {
