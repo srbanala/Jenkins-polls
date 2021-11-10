@@ -20,7 +20,7 @@ pipeline {
                     branch 'feature'
                     }
                 steps{
-                sh 'pre-prod-deploy.sh'
+                sh './pre-prod-deploy.sh'
                 }
                 }
             stage ('Prod-Deploy') {
