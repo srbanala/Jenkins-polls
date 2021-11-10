@@ -20,6 +20,7 @@ pipeline {
                     branch 'feature'
                     }
                 steps{
+                sh 'chmod 777 pre-prod-deploy.sh'
                 sh './pre-prod-deploy.sh'
                 }
                 }
