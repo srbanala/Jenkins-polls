@@ -21,6 +21,7 @@ pipeline {
                     }
                 steps{
                 sh 'chmod 777 pre-prod-deploy.sh'
+                sh 'ssh  -tt ec2-user@10.0.102.109 -i /tmp/mykp.pem'
                 sh './pre-prod-deploy.sh'
                 }
                 }
