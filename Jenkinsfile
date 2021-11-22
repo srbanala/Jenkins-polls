@@ -21,7 +21,7 @@ pipeline {
                     }
                 steps{
                 sh 'chmod 777 pre-prod-deploy.sh'
-                 sshagent(credentials : ['ec2-user'])
+                sshagent(credentials : ['ec2-user'])
                  {
                  sh 'ssh -o StrictHostKeyChecking=no  ec2-user@10.0.2.14 uptime'
                  sh 'ssh -v  ec2-user@10.0.2.14'
@@ -38,6 +38,7 @@ pipeline {
                 sh 'docker run -d -p 9090:8000 -t anreddy/polls_sqlite'
                 }
               }
+   }
    }
 
  }
