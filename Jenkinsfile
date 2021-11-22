@@ -21,7 +21,7 @@ pipeline {
                     }
                 steps{
                 sh 'chmod 777 pre-prod-deploy.sh'
-                sh './pre-prod-deploy.sh'
+                sh 'ssh ec2-user@10.0.2.14 -i /tmp/mykp.pem '
                 }
                 }
             stage ('Prod-Deploy') {
@@ -33,4 +33,5 @@ pipeline {
                 }
               }
    }
+
  }
