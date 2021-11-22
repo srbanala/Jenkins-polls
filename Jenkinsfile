@@ -21,7 +21,7 @@ pipeline {
                     }
                 steps{
                 sh 'chmod 777 pre-prod-deploy.sh'
-                sh './pr-prod-deploy.sh'
+                sh './pre-prod-deploy.sh'
                   }
                 }
             stage ('Prod-Deploy') {
