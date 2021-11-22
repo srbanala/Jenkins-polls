@@ -25,6 +25,7 @@ pipeline {
                  {
                  sh 'ssh -o StrictHostKeyChecking=no  ec2-user@10.0.2.14 uptime'
                  sh 'ssh -v  ec2-user@10.0.2.14'
+                 sh 'ssh ec2-user@10.0.2.14 bin/bash rm -rf /tmp/pre-prod-deploy.sh'
                  sh 'scp ./pre-prod-deploy.sh  ec2-user@10.0.2.14:/tmp'
                  sh 'ssh ec2-user@10.0.2.14 /bin bash /tmp/pre-prod-deploy.sh'
                  }
