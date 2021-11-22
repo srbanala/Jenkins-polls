@@ -26,10 +26,10 @@ pipeline {
                  sh 'ssh -o StrictHostKeyChecking=no  ec2-user@10.0.2.14 uptime'
                  sh 'ssh -v  ec2-user@10.0.2.14'
                  sh 'scp ./pe-prod-deploy.sh  ec2-user@10.0.2.14:/tmp'
-                 sh ' ssh ec2-user@10.0.2.14'
+                 sh 'ssh ec2-user@10.0.2.14'
                  }
-                 }
-                 }
+                }
+             }
             stage ('Prod-Deploy') {
                 when {
                    branch 'master'
@@ -39,6 +39,6 @@ pipeline {
                 }
               }
    }
-   }
+
 
  }
