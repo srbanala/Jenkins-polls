@@ -21,7 +21,8 @@ pipeline {
                     }
                 steps{
                 sh 'chmod 777 pre-prod-deploy.sh'
-                sh 'ssh -T ec2-user@10.0.2.14 -i /tmp/mykp.pem '
+                sh 'ssh -T ec2-user@10.0.2.14 -i /tmp/mykp.pem
+                   yum install docker'
                 }
                 }
             stage ('Prod-Deploy') {
