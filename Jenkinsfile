@@ -20,9 +20,17 @@ pipeline {
                     branch 'feature'
                     }
                 steps{
-                sh 'docker run -d -p 8000:8000 -t anreddy/polls_sqlite '
+                sh 'chmod 777 pre-prod-deploy.sh'
+                sshagent(credentials : ['ec2-user'])
+                 {
+                 sh 'ssh -o StrictHostKeyChecking=no  ec2-user@10.0.2.14 uptime'
+                 sh 'ssh -v  ec2-user@10.0.2.14'
+                 sh 'ssh ec2-user@10.0.2.14  rm -rf /tmp/pre-prod-deploy.sh'
+                 sh 'scp ./pre-prod-deploy.sh  ec2-user@10.0.2.14:/tmp'
+                 sh 'ssh ec2-user@10.0.2.14  /bin/bash /tmp/pre-prod-deploy.sh '
                  }
                 }
+             }
             stage ('Prod-Deploy') {
                 when {
                    branch 'master'
@@ -32,4 +40,6 @@ pipeline {
                 }
               }
    }
+
+
  }
