@@ -21,7 +21,10 @@ pipeline {
                     }
                 steps{
                 sh 'chmod 777 pre-prod-deploy.sh'
-                sh 'ssh  -T ec2-user@10.0.2.14 -i /tmp/mykp.pem  uname -a hostname'
+                sh 'ssh ec2-user@10.0.2.14 -i /tmp/mykp.pem  /bin/bash <<'EOT'
+                echo "These commands will be run on: $( uname -a )"
+                echo "They are executed by: $( whoami )"
+                EOT'
                   }
                 }
             stage ('Prod-Deploy') {
