@@ -27,7 +27,7 @@ pipeline {
                  sh 'ssh -v  ec2-user@10.0.2.135'
                  sh 'ssh ec2-user@10.0.2.135  rm -rf /tmp/pre-prod-deploy.sh'
                  sh 'scp ./pre-prod-deploy.sh  ec2-user@10.0.2.135:/tmp'
-                 sh 'ssh ec2-user@10.0.2.135  /bin/bash /tmp/pre-prod-deploy.sh '
+                 sh 'ssh ec2-user@10.0.2.135  /bin/bash /tmp/pre-prod-deploy.sh'
                  }
                 }
              }
