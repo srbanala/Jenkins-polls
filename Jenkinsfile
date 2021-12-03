@@ -38,11 +38,11 @@ pipeline {
              steps{
              sshagent(credentials : ['ec2-user'])
              {
-             sh 'ssh -o StrictHostKeyChecking=no ec2-user@10.0.2.157 uptime'
-             sh ' ssh -v ec2-user@10.0.2.157'
-             sh ' ssh ec2-user@10.0.2.157 rm -rf /tmp/pre-prod-deploy.sh'
-             sh 'scp ./pre-prod-deploy.sh ec2-user@10.0.2.157:/tmp'
-             sh 'ssh ec2-user@10.0.2.157 /bin/bash /tmp/pre-prod-deploy.sh'
+             sh 'ssh -o StrictHostKeyChecking=no ec2-user@10.0.2.190 uptime'
+             sh ' ssh -v ec2-user@10.0.2.190'
+             sh ' ssh ec2-user@10.0.2.190 rm -rf /tmp/pre-prod-deploy.sh'
+             sh 'scp ./pre-prod-deploy.sh ec2-user@10.0.2.190:/tmp'
+             sh 'ssh ec2-user@10.0.2.190 /bin/bash /tmp/pre-prod-deploy.sh'
              }
            }
         }
