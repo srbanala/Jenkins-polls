@@ -12,7 +12,7 @@ pipeline {
              }
             stage('Test') {
                 steps{
-                    sh 'docker run -t anreddy/polls_sqlite python ./mysite/manage.py test run  '
+                    sh 'docker run -t anreddy/polls_sqlite python ./mysite/manage.py test run '
                 }
                }
             stage ('Test-Deploy') {
