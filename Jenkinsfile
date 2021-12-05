@@ -51,7 +51,7 @@ pipeline {
                    branch 'master'
                    }
                 steps {
-                sh 'docker run -d -p 9090:8000 -t anreddy/polls_sqlite'
+                sh 'docker run -d -p 9000:8000 -t anreddy/polls_sqlite'
                 }
               }
    }
