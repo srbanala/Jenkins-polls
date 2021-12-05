@@ -16,10 +16,7 @@ pipeline {
                 }
                }
             stage ('Deploy') {
-                when {
-                    branch 'feature'
-                    }
-                steps{
+                 steps{
                 sh 'chmod 777 pre-prod-deploy.sh'
                 sshagent(credentials : ['ec2-user'])
                  {
