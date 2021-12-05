@@ -33,8 +33,12 @@ pipeline {
                    branch 'master'
                    }
                 steps {
-                sh 'docker run -d -p 9090:8000 -t anreddy/polls_sqlite'
-                }
+                sh 'ssh -o StrictHostKeyChecking=no  ec2-user@10.0.1.217 uptime'
+                 sh 'ssh -v  ec2-user@10.0.1.217'
+                 sh 'ssh ec2-user@10.0.1.217  rm -rf /tmp/pre-prod-deploy.sh'
+                 sh 'scp ./pre-prod-deploy.sh  ec2-user@10.0.1.217:/tmp'
+                 sh 'ssh ec2-user@10.0.1.217  /bin/bash /tmp/pre-prod-deploy.sh '
+                 }
             }
         }
     }
