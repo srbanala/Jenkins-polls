@@ -7,7 +7,6 @@ pipeline {
             stage('Build') {
                 steps {
                 sh 'docker build -t anreddy/polls_sqlite .'
-
                 }
              }
             stage('Test') {
