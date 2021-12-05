@@ -23,11 +23,11 @@ pipeline {
                 sh 'chmod 777 pre-prod-deploy.sh'
                 sshagent(credentials : ['ec2-user'])
                  {
-                 sh 'ssh -o StrictHostKeyChecking=no  ec2-user@10.0.2.135 uptime'
-                 sh 'ssh -v  ec2-user@10.0.2.135'
-                 sh 'ssh ec2-user@10.0.2.135  rm -rf /tmp/pre-prod-deploy.sh'
-                 sh 'scp ./pre-prod-deploy.sh  ec2-user@10.0.2.135:/tmp'
-                 sh 'ssh ec2-user@10.0.2.135  /bin/bash /tmp/pre-prod-deploy.sh'
+                 sh 'ssh -o StrictHostKeyChecking=no  ec2-user@10.0.2.216 uptime'
+                 sh 'ssh -v  ec2-user@10.0.2.216'
+                 sh 'ssh ec2-user@10.0.2.216  rm -rf /tmp/pre-prod-deploy.sh'
+                 sh 'scp ./pre-prod-deploy.sh  ec2-user@10.0.2.216:/tmp'
+                 sh 'ssh ec2-user@10.0.2.216  /bin/bash /tmp/pre-prod-deploy.sh '
                  }
                 }
              }
@@ -38,11 +38,11 @@ pipeline {
              steps{
              sshagent(credentials : ['ec2-user'])
              {
-             sh 'ssh -o StrictHostKeyChecking=no ec2-user@10.0.2.190 uptime'
-             sh ' ssh -v ec2-user@10.0.2.190'
-             sh ' ssh ec2-user@10.0.2.190 rm -rf /tmp/pre-prod-deploy.sh'
-             sh 'scp ./pre-prod-deploy.sh ec2-user@10.0.2.190:/tmp'
-             sh 'ssh ec2-user@10.0.2.190 /bin/bash /tmp/pre-prod-deploy.sh'
+             sh 'ssh -o StrictHostKeyChecking=no ec2-user@10.0.1.58 uptime'
+             sh ' ssh -v ec2-user@10.0.1.58'
+             sh ' ssh ec2-user@10.0.1.58 rm -rf /tmp/pre-prod-deploy.sh'
+             sh 'scp ./pre-prod-deploy.sh ec2-user@10.0.1.58:/tmp'
+             sh 'ssh ec2-user@10.0.1.58 /bin/bash /tmp/pre-prod-deploy.sh'
              }
            }
         }
