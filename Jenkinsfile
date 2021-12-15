@@ -3,6 +3,7 @@ pipeline {
         environment  {
             DOCKER_CREDS=credentials('docker_id')
             }
+        parameters (name: 'Ec2-ip-address', defaultValue: '10.0.2.90', description: 'Web2 server')
         stages {
             stage('Build') {
                 steps {
@@ -22,15 +23,15 @@ pipeline {
                 sh 'chmod 777 pre-prod-deploy.sh'
                 sshagent(credentials : ['ec2-user'])
                  {
-                 sh 'ssh -o StrictHostKeyChecking=no  ec2-user@10.0.2.216 uptime'
-                 sh 'ssh -v  ec2-user@10.0.2.216'
-                 sh 'ssh ec2-user@10.0.2.216  rm -rf /tmp/pre-prod-deploy.sh'
-                 sh 'scp ./pre-prod-deploy.sh  ec2-user@10.0.2.216:/tmp'
-                 sh 'ssh ec2-user@10.0.2.216  /bin/bash /tmp/pre-prod-deploy.sh '
+                 sh 'ssh -o StrictHostKeyChecking=no  ec2-user@"${Ec2-ip-address}" uptime'
+                 sh 'ssh -v  ec2-user@"${Ec2-ip-address}"'
+                 sh 'ssh ec2-user@"${Ec2-ip-address}"  rm -rf /tmp/pre-prod-deploy.sh'
+                 sh 'scp ./pre-prod-deploy.sh  ec2-user@"${Ec2-ip-address}":/tmp'
+                 sh 'ssh ec2-user@"${Ec2-ip-address}"  /bin/bash /tmp/pre-prod-deploy.sh '
                  }
                 }
              }
-            stage('QA-Deplloy'){
+       //    stage('QA-Deplloy'){
              when {
                   branch 'feature'
                   }
@@ -44,7 +45,7 @@ pipeline {
              sh 'ssh ec2-user@10.0.1.58 /bin/bash /tmp/pre-prod-deploy.sh'
              }
            }
-        }
+        } //
             stage ('Prod-Deploy') {
                 when {
                    branch 'master'
