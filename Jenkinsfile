@@ -4,7 +4,7 @@ pipeline {
             DOCKER_CREDS=credentials('docker_id')
             }
         parameters {
-          string(name: 'Ec2-ip-address', defaultValue: '10.0.2.90', description: 'Web2 server')
+          string(name: 'address', defaultValue: '10.0.2.90', description: 'Web2 server')
          }
         stages {
             stage('Build') {
@@ -25,7 +25,7 @@ pipeline {
                 sh 'chmod 777 pre-prod-deploy.sh'
                 sshagent(credentials : ['ec2-user'])
                 {
-                echo "${params.Ec2-ip-address} of web2"
+                echo "${params.address} of web2"
                 // sh 'ssh -o StrictHostKeyChecking=no ec2-user@${Ec2-ip-address} uptime '
                  //sh 'ssh -v  ec2-user@${Ec2-ip-address}'
                  //sh 'ssh ec2-user@${Ec2-ip-address}  rm -rf /tmp/pre-prod-deploy.sh'
