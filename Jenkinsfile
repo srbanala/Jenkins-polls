@@ -25,7 +25,8 @@ pipeline {
                 sh 'chmod 777 pre-prod-deploy.sh'
                 sshagent(credentials : ['ec2-user'])
                  {
-                 sh 'ssh -o StrictHostKeyChecking=no ec2-user@${Ec2-ip-address} uptime '
+                 echo "${Ec2-ip-address} of web2"
+                // sh 'ssh -o StrictHostKeyChecking=no ec2-user@${Ec2-ip-address} uptime '
                  //sh 'ssh -v  ec2-user@${Ec2-ip-address}'
                  //sh 'ssh ec2-user@${Ec2-ip-address}  rm -rf /tmp/pre-prod-deploy.sh'
                  //sh 'scp ./pre-prod-deploy.sh  ec2-user@${Ec2-ip-address}:/tmp'
