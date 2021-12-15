@@ -32,20 +32,20 @@ pipeline {
                 }
              }
        //    stage('QA-Deplloy'){
-             when {
-                  branch 'feature'
-                  }
-             steps{
-             sshagent(credentials : ['ec2-user'])
-             {
-             sh 'ssh -o StrictHostKeyChecking=no ec2-user@10.0.1.58 uptime'
-             sh ' ssh -v ec2-user@10.0.1.58'
-             sh ' ssh ec2-user@10.0.1.58 rm -rf /tmp/pre-prod-deploy.sh'
-             sh 'scp ./pre-prod-deploy.sh ec2-user@10.0.1.58:/tmp'
-             sh 'ssh ec2-user@10.0.1.58 /bin/bash /tmp/pre-prod-deploy.sh'
-             }
-           }
-        } //
+       //      when {
+        //          branch 'feature'
+        //          }
+         //     steps{
+         //      sshagent(credentials : ['ec2-user'])
+          //     {
+          //     sh 'ssh -o StrictHostKeyChecking=no ec2-user@10.0.1.58 uptime'
+          //     sh ' ssh -v ec2-user@10.0.1.58'
+          //     sh ' ssh ec2-user@10.0.1.58 rm -rf /tmp/pre-prod-deploy.sh'
+         //      sh 'scp ./pre-prod-deploy.sh ec2-user@10.0.1.58:/tmp'
+          //     sh 'ssh ec2-user@10.0.1.58 /bin/bash /tmp/pre-prod-deploy.sh'
+          //     }
+         //    }
+       //   }
             stage ('Prod-Deploy') {
                 when {
                    branch 'master'
