@@ -25,9 +25,9 @@ pipeline {
                 sh 'chmod 777 pre-prod-deploy.sh'
                 sshagent(credentials : ['ec2-user'])
                  {
-                 echo "${params.Ec2-ip-address} of web2"
+                 echo "${parameters.Ec2-ip-address} of web2"
                    }
                 }
              }
             }
-            }
+          }
