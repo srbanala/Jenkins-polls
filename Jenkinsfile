@@ -26,7 +26,7 @@ pipeline {
                 sshagent(credentials : ['ec2-user'])
                 {
                 echo "${params.address} of web2"
-                // sh 'ssh -o StrictHostKeyChecking=no ec2-user@${Ec2-ip-address} uptime '
+                sh 'ssh -o StrictHostKeyChecking=no ec2-user@"${address}" uptime '
                  //sh 'ssh -v  ec2-user@${Ec2-ip-address}'
                  //sh 'ssh ec2-user@${Ec2-ip-address}  rm -rf /tmp/pre-prod-deploy.sh'
                  //sh 'scp ./pre-prod-deploy.sh  ec2-user@${Ec2-ip-address}:/tmp'
