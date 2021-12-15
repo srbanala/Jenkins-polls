@@ -4,7 +4,7 @@ pipeline {
             DOCKER_CREDS=credentials('docker_id')
             }
         parameters {
-          string(name: 'Ec2-ip-address', defaultValue: '10.0.2.90', description: 'Web2 server')
+          string(name: 'ipaddress', defaultValue: '10.0.2.90', description: 'Web2 server')
          }
         stages {
             stage('Build') {
@@ -23,9 +23,11 @@ pipeline {
                   }
                 steps{
                 sh 'chmod 777 pre-prod-deploy.sh'
-               // sshagent(credentials : ['ec2-user'])
-                  echo "${Ec2-ip-address}"
-                  }
+                sshagent(credentials : ['ec2-user'])
+                {
+                echo "$ipaddress"
+                }
+               }
              }
             }
           }
