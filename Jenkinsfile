@@ -4,7 +4,7 @@ pipeline {
         DOCKER_CREDS=credentials('docker_id')
         }
      parameters{
-         string(name: 'ec2-address', defaultValue: '10.0.2.176'  ,description: 'web2 server' )
+         string(name: 'ec2address', defaultValue: '10.0.2.176'  ,description: 'web2 server' )
          }
      stages {
 
@@ -31,7 +31,7 @@ pipeline {
             sh ' chmod 777 * '
             sshagent(credentials : ['ec2-user'])
             {
-            sh 'echo "web2 server ip address is ${params.ec2-address}" '
+            sh 'echo "web2 server ip address is ${ec2-address}" '
             sh 'ssh -o StrictHostKeyChecking=no ec2-user@"${ec2-address}" uptime'
             sh 'ssh -v ec2-user@"${ec2-address}" '
             //sh 'scp -r * ec2-user@"${ec2-address}":/home/ec2-user'
