@@ -50,6 +50,8 @@ pipeline {
 
          stage('Sonarqube_deploy') {
            steps{
+                 sshagent(credentials : ['sshkeys'])
+                  {
                 sh 'echo "Test instance ip address is ${test}" '
                 /*sh 'ssh -o StrictHostKeyChecking=no ec2-user@"${ec2}" uptime'
                 sh 'ssh -v ec2-user@"${ec2}" '
@@ -60,7 +62,7 @@ pipeline {
                 sh 'ssh ec2-user@"${ec2}" docker-compose up -d ' */
          }
         }
-
+        }
        }
      }
 
