@@ -5,6 +5,7 @@ pipeline {
         }
      parameters{
          string(name: 'address', defaultValue: '10.0.2.67'  ,description: 'web2 server' )
+         string(name: 'ec2-address',defualtVaule: '10.0.1.66', description: 'test1 instance' )
          }
      stages {
 
@@ -49,9 +50,6 @@ pipeline {
 
          stage('Sonarqube_deploy') {
            steps{
-            parameters {
-             string(name: 'ec2-address', defaultValue: '10.0.1.66', description: 'test1 server')
-             }
                 sh 'echo "Test instance ip addres is "${ec2-address}" '
                 sh 'ssh -o StrictHostKeyChecking=no ec2-user@"${ec2-address}" uptime'
                 sh 'ssh -v ec2-user@"${ec2-address}" '
