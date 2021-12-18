@@ -24,9 +24,9 @@ pipeline {
           }
 
        stage('Deploy') {
-        when {
-        branch feature
-        }
+        /*when {
+        branch 'dev'
+         } */
          steps {
             sh ' chmod 777 * '
             sshagent(credentials : ['ec2-user'])
