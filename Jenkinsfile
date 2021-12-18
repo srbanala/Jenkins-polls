@@ -28,7 +28,8 @@ pipeline {
        //TODO Uncommet the below block when using  multibranch pipeline
         /*when {
         branch 'dev'
-         } */
+         }
+         */
          steps {
             sh ' chmod 777 * '
             sshagent(credentials : ['sshkeys'])
