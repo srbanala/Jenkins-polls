@@ -5,7 +5,7 @@ pipeline {
         }
      parameters{
          string(name: 'address', defaultValue: '10.0.2.67'  ,description: 'web2 server' )
-         string(name: 'test_address', defaultValue: '10.0.1.66', description: 'test1 instance' )
+         string(name: 'test', defaultValue: '10.0.1.66', description: 'test1 instance' )
          }
      stages {
 
@@ -52,13 +52,13 @@ pipeline {
            steps{
                  sshagent(credentials : ['sshkeys'])
                   {
-                sh 'echo "Test instance ip address is ${test_address}" '
-                sh 'ssh -o StrictHostKeyChecking=no ec2-user@"${test_address}" uptime'
-                sh 'ssh -v ec2-user@"${test_address}" '
-                sh 'scp -r docker-compose-install.sh ec2-user@"${test_address}":/tmp '
-                sh 'ssh ec2-user@"${test_address}" sh /tmp/docker-compose-install.sh '
-                sh 'scp -r docker-compose-sonarqube.yml ec2-user@"${test_address}":/home/ec2-user/docker-compose.yml '
-                sh 'ssh ec2-user@"${est_address}" docker-compose up -d '
+                sh 'echo "Test instance ip address is ${test}" '
+                sh 'ssh -o StrictHostKeyChecking=no ec2-user@"${test}" uptime'
+                sh 'ssh -v ec2-user@"${test}" '
+                sh 'scp -r docker-compose-install.sh ec2-user@"${test}":/tmp '
+                sh 'ssh ec2-user@"${test}" sh /tmp/docker-compose-install.sh '
+                sh 'scp -r docker-compose-sonarqube.yml ec2-user@"${test}":/home/ec2-user/docker-compose.yml '
+                sh 'ssh ec2-user@"${est}" docker-compose up -d '
                 }
                }
          }
