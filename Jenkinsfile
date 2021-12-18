@@ -4,7 +4,7 @@ pipeline {
         DOCKER_CREDS=credentials('docker_id')
         }
      parameters{
-         string(name: 'address', defaultValue: '10.0.2.47'  ,description: 'web2 server' )
+         string(name: 'address', defaultValue: '10.0.2.67'  ,description: 'web2 server' )
          }
      stages {
 
