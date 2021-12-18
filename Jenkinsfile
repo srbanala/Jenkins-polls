@@ -5,7 +5,7 @@ pipeline {
         }
      parameters{
          string(name: 'address', defaultValue: '10.0.2.67'  ,description: 'web2 server' )
-         string(name: 'ec2-address',defualtVaule: '10.0.1.66', description: 'test1 instance' )
+         string(name: 'ec2-address',defaultValue: '10.0.1.66', description: 'test1 instance' )
          }
      stages {
 
