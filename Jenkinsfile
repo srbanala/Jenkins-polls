@@ -5,6 +5,7 @@ pipeline {
         }
      parameters{
          string(name: 'address', defaultValue: '10.0.2.67'  ,description: 'web2 server' )
+         string(sever2: 'ec2-address', defaultValue: '10.0.1.66', description: 'Test1 instance')
          }
      stages {
 
@@ -46,6 +47,19 @@ pipeline {
             }
             }
          }
+
+         stage('Sonarqube_deploy'){
+         sh 'echo "Test instance ip addres is "${server2}" '
+         sh 'ssh -o StrictHostKeyChecking=no ec2-user@"${server2}" uptime'
+         sh 'ssh -v ec2-user@"${server2}" '
+         sh 'scp -r docker-compose-install.sh ec2-user@"${server2}":/tmp '
+         sh 'ssh ec2-user@"${server2}" sh /tmp/docker-compose-install.sh '
+         sh 'scp -r docker-compose-sonarqube.yml ec2-user@"${server2}":/home/ec2-user/docker-compose.yml '
+           //sh 'ssh ec-user@"${server2}" ./tmp/docker-compose-install.sh'
+           sh 'ssh ec2-user@"${server2}" docker-compose up -d '
+         }
+
+
        }
      }
 
