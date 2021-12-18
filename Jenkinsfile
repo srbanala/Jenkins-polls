@@ -29,10 +29,10 @@ pipeline {
          } */
          steps {
             sh ' chmod 777 * '
-            sshagent(credentials : ['ec2-user'])
+            sshagent(credentials : ['sshkeys'])
             {
             sh 'echo "web2 server ip address is ${address}" '
-             sh 'ssh -o StrictHostKeyChecking=no ec2-user@"${address}" uptime'
+            sh 'ssh -o StrictHostKeyChecking=no ec2-user@"${address}" uptime'
             sh 'ssh -v ec2-user@"${address}" '
             //sh 'scp -r * ec2-user@"${ec2-address}":/home/ec2-user'
             sh 'ssh ec2-user@"${address}" docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest '
