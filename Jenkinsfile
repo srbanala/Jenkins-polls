@@ -40,7 +40,7 @@ pipeline {
             //sh 'scp -r * ec2-user@"${ec2-address}":/home/ec2-user'
            //sh 'ssh ec2-user@"${address}" docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest '
            sh 'scp -r docker-compose-install.sh ec2-user@"${address}":/home/ec2-user '
-           sh 'ssh ec-user@"{address}" sh ./home/ec2-user/docker-compose-install.sh'
+           sh 'ssh ec-user@"${address}" sh ./home/ec2-user/docker-compose-install.sh'
            sh 'ssh ec2-user@"${address}" docker-compose -c docker-compose-db.yml '
             }
             }
