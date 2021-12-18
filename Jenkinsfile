@@ -4,9 +4,7 @@ pipeline {
         DOCKER_CREDS=credentials('docker_id')
         }
      parameters{
-         string(name: 'address', defaultValue: '10.0.2.67'  ,description: 'web2 server' ,
-                name: 'ec2-address', defaultValue: '10.0.1.66', description: 'test1 server')
-
+         string(name: 'address', defaultValue: '10.0.2.67'  ,description: 'web2 server' )
          }
      stages {
 
@@ -50,6 +48,9 @@ pipeline {
          }
 
          stage('Sonarqube_deploy') {
+         parameters {
+             string(name: 'ec2-address', defaultValue: '10.0.1.66', description: 'test1 server')
+             }
           steps{
                 sh 'echo "Test instance ip addres is "${ec2-address}" '
                 sh 'ssh -o StrictHostKeyChecking=no ec2-user@"${ec2-address}" uptime'
