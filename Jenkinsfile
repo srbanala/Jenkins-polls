@@ -58,7 +58,7 @@ pipeline {
                 sh 'scp -r docker-compose-install.sh ec2-user@"${test}":/tmp '
                 sh 'ssh ec2-user@"${test}" sh /tmp/docker-compose-install.sh '
                 sh 'scp -r docker-compose-sonarqube.yml ec2-user@"${test}":/home/ec2-user/docker-compose.yml '
-                sh 'ssh ec2-user@"${est}" docker-compose up -d '
+                sh 'ssh ec2-user@"${test}" docker-compose up -d '
               }
            }
          }
