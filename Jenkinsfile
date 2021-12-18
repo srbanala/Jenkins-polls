@@ -5,7 +5,7 @@ pipeline {
         }
      parameters{
          string(name: 'address', defaultValue: '10.0.2.67'  ,description: 'web2 server' )
-         string(name: 'test', defaultValue: '10.0.1.66', description: 'test1 instance' )
+         string(name: 'test-address', defaultValue: '10.0.1.66', description: 'test1 instance' )
          }
      stages {
 
@@ -52,7 +52,7 @@ pipeline {
            steps{
                  sshagent(credentials : ['sshkeys'])
                   {
-                sh 'echo "Test instance ip address is ${test}" '
+                sh 'echo "Test instance ip address is ${test-address}" '
                 /*sh 'ssh -o StrictHostKeyChecking=no ec2-user@"${ec2}" uptime'
                 sh 'ssh -v ec2-user@"${ec2}" '
                 sh 'scp -r docker-compose-install.sh ec2-user@"${ec2}":/tmp '
