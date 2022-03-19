@@ -24,7 +24,7 @@ pipeline {
                    branch 'feature'
                   } */
                 steps{
-                sh 'chmod 777 pre-prod-deploy.sh'
+              /*  sh 'chmod 777 pre-prod-deploy.sh'
                 sshagent(credentials : ['ec2-user'])
                 {
                 echo "${params.address} of web2"
@@ -32,7 +32,8 @@ pipeline {
                 sh 'ssh -v  ec2-user@"${address}" '
                 sh 'ssh ec2-user@"${address}"  rm -rf /tmp/pre-prod-deploy.sh'
                 sh 'scp ./pre-prod-deploy.sh  ec2-user@"${address}":/tmp'
-                sh 'ssh ec2-user@"${address}" /bin/bash /tmp/pre-prod-deploy.sh '
+                sh 'ssh ec2-user@"${address}" /bin/bash /tmp/pre-prod-deploy.sh ' */
+                sh '/bin/bash pre-prod-deploy.sh'
                 }
                }
              }
