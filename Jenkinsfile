@@ -4,7 +4,7 @@ pipeline {
             DOCKER_CREDS=credentials('docker_id')
             }
         parameters {
-          string(name: 'address', defaultValue: '10.0.2.176', description: 'Web2 server')
+          string(name: 'address', defaultValue: '100.24.65.179', description: 'Web1 server')
          }
         stages {
             stage('Build') {
@@ -18,6 +18,8 @@ pipeline {
                 }
                }
             stage ('Test-Deploy') {
+
+            // TODO Uncommet the below block when running multibranch pipeline
            /*  when {
                    branch 'feature'
                   } */
