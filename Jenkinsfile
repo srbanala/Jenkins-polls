@@ -32,9 +32,9 @@ pipeline {
                 sh 'ssh -v  ec2-user@"${address}" '
                 sh 'ssh ec2-user@"${address}"  rm -rf /tmp/pre-prod-deploy.sh'
                 sh 'scp ./pre-prod-deploy.sh  ec2-user@"${address}":/tmp'
-                sh 'ssh ec2-user@"${address}" /bin/bash /tmp/pre-prod-deploy.sh ' */
+                sh 'ssh ec2-user@"${address}" /bin/bash /tmp/pre-prod-deploy.sh ' 
+                } */
                 sh '/bin/bash pre-prod-deploy.sh'
-                }
                }
              }
              /*   stage('QA-Deplloy'){
