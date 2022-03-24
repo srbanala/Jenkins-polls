@@ -57,7 +57,7 @@ pipeline {
 
        stage ('Prod-Deploy') {
                 when {
-                   branch 'master'
+                   branch 'feature'
                    }
                 steps {
                 sh 'docker run -d -p 9000:8000 -t anreddy/polls_sqlite'
