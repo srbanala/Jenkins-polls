@@ -18,11 +18,13 @@ pipeline {
                 }
                }
             stage('SonarQube Analysis') {
-              def scannerHome = tool 'sonar-scanner';
+              steps {
+                   def scannerHome = tool 'sonar-scanner';
                   withSonarQubeEnv() {
                     sh "${scannerHome}/bin/sonar-scanner"
                      }
                     }
+            }
                                        
              stage ('Test-Deploy') {
 
