@@ -17,7 +17,14 @@ pipeline {
                     sh 'docker run -t anreddy/polls_sqlite python ./mysite/manage.py test run '
                 }
                }
-            stage ('Test-Deploy') {
+            stage('SonarQube Analysis') {
+              def scannerHome = tool 'sonar-scanner';
+                  withSonarQubeEnv() {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                     }
+                    }
+                                       
+             stage ('Test-Deploy') {
 
             // TODO Uncommet the below block when running multibranch pipeline
            /*  when {
